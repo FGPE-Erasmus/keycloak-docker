@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+
+  keycloak:
+    image: fgpe/keycloak:latest
+    env_file: .env
+    volumes:
+      - type: bind
+        source: ./config/fgpe-realm.json
+        target: /tmp/fgpe-realm.json
+    ports:
+      - 10001:8080
+    environment:
+      - KEYCLOAK_IMPORT=/tmp/fgpe-realm.json
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
