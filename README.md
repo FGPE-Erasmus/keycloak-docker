@@ -29,4 +29,4 @@ There are two clients in the FGPE realm:
 * `fgpe-gamification-service` client for the gamification service. 
 * `fgpe-learning-platform` client for the learning platform.
 
-Open Keycloak Admin Console > Clients > <client> > Credentials > Regenerate Secret
+Open Keycloak Admin Console > Clients > [client] > Credentials > Regenerate Secret
