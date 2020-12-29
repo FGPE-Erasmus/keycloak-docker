@@ -62,9 +62,18 @@
         "attributes": {}
       },
       {
+        "id": "0ae7e23f-dd07-41a3-883e-4e59553d762b",
+        "name": "author",
+        "description": "Create/modify/delete educational resources, courses, and gamification layers.",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "fgpe",
+        "attributes": {}
+      },
+      {
         "id": "9ad14184-b348-4677-b047-05052b7cd83d",
         "name": "teacher",
-        "description": "Role of a teacher/instructor.",
+        "description": "Define student groups, attach/detach students to/from student groups, assign courses/single challenges to students/student groups, view profile of students from defined groups",
         "composite": false,
         "clientRole": false,
         "containerId": "fgpe",
@@ -73,7 +82,7 @@
       {
         "id": "7c3c433c-b20d-4f20-9742-a9ff0d58b945",
         "name": "student",
-        "description": "Role of a student.",
+        "description": "Join/leave courses, view educational resources, solve exercises, and view/edit profile.",
         "composite": false,
         "clientRole": false,
         "containerId": "fgpe",
@@ -381,10 +390,37 @@
       ]
     }
   },
-  "groups": [],
+  "groups": [
+    {
+      "id": "f9ab02a7-4233-4ae4-932e-f48a34e46786",
+      "name": "Admin",
+      "path": "/Admin",
+      "attributes": {},
+      "realmRoles": [],
+      "clientRoles": {
+        "realm-management": [
+          "impersonation",
+          "manage-events",
+          "manage-identity-providers",
+          "query-groups",
+          "query-clients",
+          "create-client",
+          "manage-clients",
+          "query-users",
+          "manage-users",
+          "realm-admin",
+          "manage-authorization",
+          "manage-realm",
+          "query-realms"
+        ]
+      },
+      "subGroups": []
+    }
+  ],
   "defaultRoles": [
     "offline_access",
-    "uma_authorization"
+    "uma_authorization",
+    "student"
   ],
   "requiredCredentials": [
     "password"
@@ -423,6 +459,154 @@
   "webAuthnPolicyPasswordlessCreateTimeout": 0,
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister": false,
   "webAuthnPolicyPasswordlessAcceptableAaguids": [],
+  "users": [
+    {
+      "id": "5c3b6311-c2f2-4a29-a72e-3602a624db42",
+      "createdTimestamp": 1607081829280,
+      "username": "admin",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "FGPE",
+      "email": "admin@fgpe.usz.edu.pl",
+      "attributes": {
+        "locale": [
+          "en"
+        ]
+      },
+      "credentials": [
+        {
+          "id": "c3eb13b3-b67e-4327-b63f-339c519ba319",
+          "type": "password",
+          "createdDate": 1607082999751,
+          "secretData": "{\"value\":\"StMHE+aXQvG2gj9wHi4S2u5l8bVoYuI4PhvQTBkxq85fmCwip8Qx8hGJrCbK+wG779vinlHYeP+k9Gyxc07oOg==\",\"salt\":\"j6ru9kAST+IkttCU8T7oyw==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "offline_access",
+        "uma_authorization"
+      ],
+      "clientRoles": {
+        "account": [
+          "view-profile",
+          "manage-account"
+        ]
+      },
+      "notBefore": 0,
+      "groups": [
+        "/Admin"
+      ]
+    },
+    {
+      "id": "1c49e089-67fe-45be-b9df-c848f58acc34",
+      "createdTimestamp": 1606848335444,
+      "username": "author_fgpe",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "Author",
+      "lastName": "FGPE",
+      "email": "author@fgpe.usz.edu.pl",
+      "credentials": [
+        {
+          "id": "107c59d4-e470-4b4f-b5a1-1e87d029a4fd",
+          "type": "password",
+          "createdDate": 1606848335498,
+          "secretData": "{\"value\":\"kTMjBa25E80taxlKzTmrJP1BgHX99FZkfbCt3X+XuNtbw3yOOaXaCLLh97+41H4GvnKz3Wsmdc1FKDJbrMe14Q==\",\"salt\":\"T9RRIKoGWvqnx1pV9ZUwiA==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "offline_access",
+        "uma_authorization",
+        "author"
+      ],
+      "clientRoles": {
+        "account": [
+          "view-profile",
+          "manage-account"
+        ]
+      },
+      "notBefore": 0,
+      "groups": []
+    },
+    {
+      "id": "1b335cd6-b6fb-44c9-bddd-4acf549587b2",
+      "createdTimestamp": 1606848335129,
+      "username": "student_fgpe",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "Student",
+      "lastName": "FGPE",
+      "email": "student@fgpe.usz.edu.pl",
+      "credentials": [
+        {
+          "id": "a65469f1-d40a-4ea4-a52d-71a8469a3e12",
+          "type": "password",
+          "createdDate": 1606848335302,
+          "secretData": "{\"value\":\"JmxRwR67BdX/bp+ZmYf5p4tFqAHfsPh3eKiGzS6bYSizP2Yyfh2pV9z1a1Xg8AtQKTMwNmZkP1bYMaFZKIAtOA==\",\"salt\":\"b+igbyHPrSUb/dIBfxAgKw==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "offline_access",
+        "uma_authorization",
+        "student"
+      ],
+      "clientRoles": {
+        "account": [
+          "view-profile",
+          "manage-account"
+        ]
+      },
+      "notBefore": 0,
+      "groups": []
+    },
+    {
+      "id": "28b9a394-3d43-4d3a-8bb3-ea50f89461b8",
+      "createdTimestamp": 1606848335324,
+      "username": "teacher_fgpe",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "Teacher",
+      "lastName": "FGPE",
+      "email": "teacher@fgpe.usz.edu.pl",
+      "credentials": [
+        {
+          "id": "d4e1bb25-13e2-4241-a2ff-4e5da3d3205a",
+          "type": "password",
+          "createdDate": 1606848335378,
+          "secretData": "{\"value\":\"79ddVyqNLpVtATOh4EORRuuPz89cQw3tgDsBJGYw7StoqF3WqUW0MzhfTeYJe5VgDGS4Zve7JANBrf2NNLgckw==\",\"salt\":\"8k+FJiRxNCbqIjZrC1CM2Q==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "offline_access",
+        "uma_authorization",
+        "teacher"
+      ],
+      "clientRoles": {
+        "account": [
+          "view-profile",
+          "manage-account"
+        ]
+      },
+      "notBefore": 0,
+      "groups": []
+    }
+  ],
   "clientScopeMappings": {
     "account": [
       {
@@ -593,7 +777,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "8aaac94e-bd2d-4b5b-8897-88121fd5be37",
       "redirectUris": [
         "http://localhost",
         "http://insomnia.rest"
@@ -652,7 +836,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "8aaac94e-bd2d-4b5b-8897-88121fd5be37",
       "redirectUris": [
         "http://localhost",
         "http://insomnia.rest"
@@ -1325,14 +1509,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
-            "oidc-address-mapper",
-            "saml-role-list-mapper",
-            "saml-user-attribute-mapper",
             "saml-user-property-mapper",
-            "oidc-full-name-mapper",
-            "oidc-sha256-pairwise-sub-mapper"
+            "oidc-usermodel-property-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-full-name-mapper"
           ]
         }
       },
@@ -1411,14 +1595,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "saml-user-property-mapper",
             "oidc-full-name-mapper",
             "oidc-address-mapper",
-            "saml-role-list-mapper",
-            "saml-user-attribute-mapper",
-            "saml-user-property-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper"
+            "saml-role-list-mapper",
+            "oidc-usermodel-property-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       }
@@ -1430,6 +1614,12 @@
         "providerId": "rsa-generated",
         "subComponents": {},
         "config": {
+          "privateKey": [
+            "MIIEowIBAAKCAQEAkZ4pZK3VBk7iKUaDgF/aiqWD1zNBXiPUZg0GZjdDiXFXZH14O9TblL9/vC/GuZME+aohToZDNjM/JvP3GIbVYtIPinc5tVYA1qYGhDaWx3NvBsoHqmCCxCsB6oFXaRqHAe7vNGG1ykbkUYFi+qY881bcQja3vzdkxOZJc6fLaBnJjAw8kZ5APUchbvbEZzcjSP0Dk40ndDxWrs/qKx8oh4/yqMkDj7X/WRycwPFrjOmp4CvqnfDqXQ8xYdy7VsNOulOtZNPvxmSL3H2qGP0zHfxZaQvKAq49urAgaDIMBviOWNhZEm97dxTVuwwpia0QgEb+Gc6vA3d6CiCmjC+yFQIDAQABAoIBAEu8fT72AoPjZ1GccSzFrf7Kk0XMTMVP0Vq6j4d+WswTfSaw82X7EbHN3/vaxXsjckUALY6P2klIYiI6ZVwGVNmu85JK7GLaNlltxJnjYoyeBzL6xP3icGDjFX4Ig5QQzgM9aIBQCaMJOBsENpyy9aSCmtB9cRgtEWYveCiFLxAW//hYPMMdMj6z8dovSW2vnza//5x4k1c1D8gv2CD3GgZDPsSwBWW4i4YXTT7qKFPVhLfqF8JMplBJNEpV9LJlEHr/oijfXSTJGjVTFFOwqCLk8ayF8MTD6IKhit3WOM6syWeINKIakxl/yQl311W7RRiJd+Cm/vYsznXeK9bo78ECgYEA0RHhdKB/RozsVMQjLs4LTNTwSyR6dq1LdKdY9bSRwGvcXzbzjLPwTNQWnsdrEJyDTR6WfBGbqYbYBwSk1sBZllxg267a5yQogRavbTfVXhdRrtpnG/cstUWxBLZNW811bBOXuY6fquF4ZEKQF6pny2EAaeKqVFKPeukZqnwwbRkCgYEAsk4Iy6wCrlCrqt6UaN+/CPsIZEieR9As/SW8BLHM4JR9TEbHOVHxCcF9toyNnbESvLqAuHZ1qeKr330e59B8O/qhQyykE2cM9ZcQ7tNUPCmU/KZovK9ZHg94Z7hQZd1kfaPL5R58uby3/MeIXafLS26vxEf5St2FFGS4ruhKkF0CgYAviSY+80MdEmultlbdjIGrPXtJSokBtNNEOcyTSTQekSexCniD1GHdxhdCkMr6IuwDu+GxYfuHpx41Mkwce+2ir2xiZrZk+aav+y114s0DsL+kxwnMpP2oVakzDhQ2vFdndGj6CsCpBMzv1uaWSuuApZSHfr8FnyP6aUepqMUF+QKBgFVStDDKaioCHnPQuRIKZ78jaVubyGoy+yRUZ0mTz6d0RxU2FWWfiYmSltbBIY9hSccYNDqRLTMTbg2vMRfbE2gcQgkEFqvWN0RaetbeN8PmXg4cj6gi/LE+0+5GK+ri65CXzh0g3qx+20hSLzYp8kVxfRifHHMv19vvatUAAZZdAoGBAMsoXznpBaOgMfpn0TKO3Du1lweyaWLTpRYBlGc2CM8I9Gg63eR2y5u77NUJOAIWaGKpJe73yLnUA/pfMuBNy+HYPxCDllwklAl4r3capbAmlPytrZxBBcN3JdmFPWp8NvWOrvPZS9RcsVyOv+EdR+/2LgXxOoCDVrg0oC306pyb"
+          ],
+          "certificate": [
+            "MIIClzCCAX8CBgF2H5+r0zANBgkqhkiG9w0BAQsFADAPMQ0wCwYDVQQDDARGR1BFMB4XDTIwMTIwMTE4NDM0NloXDTMwMTIwMTE4NDUyNlowDzENMAsGA1UEAwwERkdQRTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJGeKWSt1QZO4ilGg4Bf2oqlg9czQV4j1GYNBmY3Q4lxV2R9eDvU25S/f7wvxrmTBPmqIU6GQzYzPybz9xiG1WLSD4p3ObVWANamBoQ2lsdzbwbKB6pggsQrAeqBV2kahwHu7zRhtcpG5FGBYvqmPPNW3EI2t783ZMTmSXOny2gZyYwMPJGeQD1HIW72xGc3I0j9A5ONJ3Q8Vq7P6isfKIeP8qjJA4+1/1kcnMDxa4zpqeAr6p3w6l0PMWHcu1bDTrpTrWTT78Zki9x9qhj9Mx38WWkLygKuPbqwIGgyDAb4jljYWRJve3cU1bsMKYmtEIBG/hnOrwN3egogpowvshUCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAY18DdA9BpPsOQs/ltVVOurvarcO44CCWob/OY9LTcyoGOUoG7NccDPskZA2VokmDwHaLaD0A7ze3w6Pdn6CepDhBWUTOE9lwDvv3y3syn+XokWtqSQ6B37XW4SXmjjO9aufy6pTuprMIKCuQFGwZuLqdvydHY4xvmfFmN48xZ8mo7miFuSL7O9WGI1eyzSQx7CblADstxUwDSeVe/vVMxjYjQzQdJjf5OHl8ZxsVlWrTUYYtJmU+C+i+61xm+WEkprTr8BcBl8v84CbDLjwqqPbEFQhugHdrRutnbUrG+DcsvCZ4bJUa6OK7F3KFc6P85nSvXx6/55F9LqJ/qa/ezg=="
+          ],
           "priority": [
             "100"
           ]
@@ -1441,6 +1631,12 @@
         "providerId": "hmac-generated",
         "subComponents": {},
         "config": {
+          "kid": [
+            "c1e16827-9595-4009-a99a-74f6798ccddb"
+          ],
+          "secret": [
+            "Z2YYs3lg-9HdvIqd615dVieV5UiJWaFz8RIwmNR5q6s4q67XtzgWobUEwG2mZE1AQ_9_18FCvljLZt6AN69sNQ"
+          ],
           "priority": [
             "100"
           ],
@@ -1455,6 +1651,12 @@
         "providerId": "aes-generated",
         "subComponents": {},
         "config": {
+          "kid": [
+            "28c4c74b-e871-4966-9404-4424244d8c46"
+          ],
+          "secret": [
+            "2bpZ0E6gnNWiQQ2-tg_VTA"
+          ],
           "priority": [
             "100"
           ]
@@ -1474,7 +1676,7 @@
   "defaultLocale": "en",
   "authenticationFlows": [
     {
-      "id": "f8db7e57-e8c8-4858-9877-6df4088e5524",
+      "id": "077969b1-0709-40dd-baac-66b58c1597e7",
       "alias": "Account verification options",
       "description": "Method with which to verity the existing account",
       "providerId": "basic-flow",
@@ -1498,7 +1700,7 @@
       ]
     },
     {
-      "id": "8a6a2abd-5b05-449d-86f4-274d85935bc6",
+      "id": "fc14cf05-21db-4813-9c3a-bfd338f4f89c",
       "alias": "Authentication Options",
       "description": "Authentication options.",
       "providerId": "basic-flow",
@@ -1529,7 +1731,7 @@
       ]
     },
     {
-      "id": "d8f9d3fb-fb9d-4f05-addb-4d292a97177e",
+      "id": "9e97254b-01c1-481b-b99e-69e885bbf587",
       "alias": "Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1553,7 +1755,7 @@
       ]
     },
     {
-      "id": "e6663e66-f7a5-4e08-a425-dfd509ed5007",
+      "id": "70eb35f8-e885-4e87-ad18-7ed265103003",
       "alias": "Direct Grant - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1577,7 +1779,7 @@
       ]
     },
     {
-      "id": "254e3957-1ad1-4934-b1af-1e46f8dcec32",
+      "id": "ebb2463e-824c-428c-bfe2-fe351dd200ac",
       "alias": "First broker login - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1601,7 +1803,7 @@
       ]
     },
     {
-      "id": "034961d5-8ad7-49ea-9f33-a9f1f40952b9",
+      "id": "fc9efa8c-341b-4bec-9c91-50a5f1e90897",
       "alias": "Handle Existing Account",
       "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
@@ -1625,7 +1827,7 @@
       ]
     },
     {
-      "id": "c85be3b3-c803-4b6c-b8cf-8ef536c48ab2",
+      "id": "a4c6b014-6694-467b-aec6-cdc58f47edd0",
       "alias": "Reset - Conditional OTP",
       "description": "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
       "providerId": "basic-flow",
@@ -1649,7 +1851,7 @@
       ]
     },
     {
-      "id": "99d80e70-088c-4769-83e8-5b465a18052d",
+      "id": "6736ded5-d985-4cb5-ba77-b7d91a36e5fd",
       "alias": "User creation or linking",
       "description": "Flow for the existing/non-existing user alternatives",
       "providerId": "basic-flow",
@@ -1674,7 +1876,7 @@
       ]
     },
     {
-      "id": "feacb1b9-0c70-457d-a56a-6a86aeb280b4",
+      "id": "c70cf18f-9cb8-4acd-9bdc-b757715a01e7",
       "alias": "Verify Existing Account by Re-authentication",
       "description": "Reauthentication of existing account",
       "providerId": "basic-flow",
@@ -1698,7 +1900,7 @@
       ]
     },
     {
-      "id": "58737747-1857-4d97-b2d6-125f679ef71a",
+      "id": "a3192e49-4189-4dec-aab1-9531b0dc3d6a",
       "alias": "browser",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -1736,7 +1938,7 @@
       ]
     },
     {
-      "id": "8d85cfe2-5704-46e6-b817-f03b09150044",
+      "id": "c0b09f3d-2ed6-4a3b-9dde-b632ec8146a4",
       "alias": "clients",
       "description": "Base authentication for clients",
       "providerId": "client-flow",
@@ -1774,7 +1976,7 @@
       ]
     },
     {
-      "id": "3b8beae7-3261-4bca-bab7-7bcf90899d37",
+      "id": "7f12d819-f76c-4ecc-be6a-9c0070c07f34",
       "alias": "direct grant",
       "description": "OpenID Connect Resource Owner Grant",
       "providerId": "basic-flow",
@@ -1805,7 +2007,7 @@
       ]
     },
     {
-      "id": "e672698b-cd19-4a74-8ca0-3c871654ffcc",
+      "id": "e0de545c-a454-4997-96a3-280bd8169650",
       "alias": "docker auth",
       "description": "Used by Docker clients to authenticate against the IDP",
       "providerId": "basic-flow",
@@ -1822,7 +2024,7 @@
       ]
     },
     {
-      "id": "55a63548-5d5d-4ca1-a07f-27de0cf83310",
+      "id": "cb261bef-b11e-4590-bd0a-82d8e2002124",
       "alias": "first broker login",
       "description": "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
       "providerId": "basic-flow",
@@ -1847,7 +2049,7 @@
       ]
     },
     {
-      "id": "75606307-8219-441d-b81e-79f2aacd3423",
+      "id": "c0a9ba4c-8cbe-4a40-9a94-c7ff46539fd2",
       "alias": "forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -1871,7 +2073,7 @@
       ]
     },
     {
-      "id": "90513350-c618-47d7-84fe-e802df0742fe",
+      "id": "22fffa48-8e00-4c32-a355-7ddc4a29b9ab",
       "alias": "http challenge",
       "description": "An authentication flow based on challenge-response HTTP Authentication Schemes",
       "providerId": "basic-flow",
@@ -1895,7 +2097,7 @@
       ]
     },
     {
-      "id": "b5740467-6364-48b6-9115-4e8e5cfd456c",
+      "id": "b0d76410-e67d-4797-b5a0-57053677e46d",
       "alias": "registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -1913,7 +2115,7 @@
       ]
     },
     {
-      "id": "814cc757-538b-4c47-9797-1ea81a9e213e",
+      "id": "3f41440f-2063-4278-9ee1-76654ea4db2f",
       "alias": "registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -1951,7 +2153,7 @@
       ]
     },
     {
-      "id": "d0fb569c-55dd-44e8-a46a-03a1b7b0c14f",
+      "id": "db11be26-c526-4787-8267-e49e1daf7eb2",
       "alias": "reset credentials",
       "description": "Reset credentials for a user if they forgot their password or something",
       "providerId": "basic-flow",
@@ -1989,7 +2191,7 @@
       ]
     },
     {
-      "id": "e3b98773-b1fd-481e-8ffa-ee1503926450",
+      "id": "1f75e753-b429-4c36-8f24-dbfdcf2cbf82",
       "alias": "saml ecp",
       "description": "SAML ECP Profile Authentication Flow",
       "providerId": "basic-flow",
@@ -2008,14 +2210,14 @@
   ],
   "authenticatorConfig": [
     {
-      "id": "673a1558-414a-44fe-bb5e-7ab5cd3b8878",
+      "id": "a5747802-7717-437b-8865-c97cd1954de3",
       "alias": "create unique user config",
       "config": {
         "require.password.update.after.registration": "false"
       }
     },
     {
-      "id": "27ec1435-f52e-4f0c-90f7-d38fa05866d7",
+      "id": "d15d15cf-041f-4638-9d44-af51c76be3bd",
       "alias": "review profile config",
       "config": {
         "update.profile.on.first.login": "missing"
